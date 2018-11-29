@@ -43,6 +43,11 @@ class CompactLayerTree extends React.Component {
             }
 
             groups.map(groupName => {
+
+                if (!groupName) {
+                    return;
+                }
+
                 let base64GroupName = Base64.encode(groupName).replace(/=/g, "");
                 let groupLayers = [];
 
@@ -64,7 +69,7 @@ class CompactLayerTree extends React.Component {
                                 </div>
                             </div>
                             <div style={{ display: 'inline-block'}}>
-                                <span>{layerMeta.f_table_title}</span>
+                                <span>{layerMeta.f_table_title || layerMeta.f_table_name}</span>
                             </div>
                             <div style={{display: 'inline-block', float: 'right'}}>
                                 <div className="checkbox">
